@@ -8,7 +8,7 @@ from pluralize import __version__
 setuptools.setup(
     name = "pluralize",
     version = __version__,
-    url = 'https://github.com/web2py/pluralize',
+    url = 'https://github.com/dkawasaka/pluralize.git',
     license = 'BSD',
     author = 'Massimo Di Pierro',
     author_email = 'massimo.dipierro@gmail.com',

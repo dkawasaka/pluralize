@@ -60,6 +60,7 @@ class Translator(object):
         self.local.tag = None
         self.local.language = None
         self.missing = set()
+        
         self.folder = folder
         if folder:
             self.load(folder)
@@ -69,7 +70,7 @@ class Translator(object):
         self.languages = {}
         for filename in os.listdir(folder):
             if re_language.match(filename):
-                with open(os.path.join(folder, filename), 'r') as fp:
+                with open(os.path.join(folder, filename.lower()), 'r') as fp:
                     self.languages[filename[:-5].lower()] = json.load(fp)
 
     def save(self, folder):
@@ -106,6 +107,7 @@ class Translator(object):
         if self.local.language:
             n = kwargs.get('n', 1)
             translations = self.local.language.get(text)
+            # print('translations', text, translations)
             if translations is None:
                 self.missing.add(text)
                 self.update_languages(self.missing)
